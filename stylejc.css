@@ -1,0 +1,27 @@
+b{
+    color: rgb(46, 184, 238);
+}
+button{
+    background-color: #6fee76; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+    width: 50%;
+  }
+  
+  body{
+    background-color: rgba(246, 248, 246, 0.74);
+  }
+  input[type=number] {
+    border: 2px solid rgb(84, 219, 30);
+    border-radius: 4px;
+  }
+  h3{
+    text-shadow: 2px;
+    color: rgb(238, 134, 37);
+  }
