@@ -4,12 +4,12 @@ b{
 button{
     background-color: #6fee76; /* Green */
     border: none;
-    color: white;
+    color: rgba(12, 11, 11, 0.534);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 30px;
     width: 50%;
   }
@@ -24,4 +24,8 @@ button{
   h3{
     text-shadow: 2px;
     color: rgb(238, 134, 37);
+  }
+  h4{
+    text-shadow: 5px;
+    color: rgb(241, 40, 40);
   }
