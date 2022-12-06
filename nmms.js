@@ -1,7 +1,9 @@
 function nmmsView() {
     let n = document.getElementById("wc").value;
     let m = document.getElementById("msr").value;
+    let w = document.getElementById("worktype").value;
     document.getElementById('hidden').style.visibility = 'hidden';
     document.getElementById('wait').innerHTML = 'Please wait...';
-    window.location.href  = "http://164.100.70.9/nregamms92/writereaddata/nregamobapp/Attendance/KL/"+m+"_1602006004_WC_"+n+"_2022-12-06R6122022091519.jpeg";
+    window.location.href  = "https://mnregaweb4.nic.in/netnrega/View_NMMS_atten_date_dtl_rpt.aspx?page=&short_name=KL&state_name=KERALA&state_code=16&district_name=KANNUR&district_code=1602&block_name=Kuthuparamba&block_code=1602006&panchayat_name=Mangattidam&panchayat_code=1602006004&fin_year=2022-2023&source=&work_code=1602006004/"+w+"/"+n+"&msr_no="+m+"&AttendanceDate=0&Digest=yKn49TQVRM+ImI1PPXnBzw";
+    console.log(w);
 }

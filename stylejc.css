@@ -29,3 +29,6 @@ button{
     text-shadow: 5px;
     color: rgb(241, 40, 40);
   }
+  #div1 {
+    border-radius: 50%;
+  }
