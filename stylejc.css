@@ -1,7 +1,7 @@
 b{
     color: rgb(46, 184, 238);
 }
-button{
+#hidden{
     background-color: #6fee76; /* Green */
     border: none;
     color: rgba(12, 11, 11, 0.534);
@@ -31,4 +31,16 @@ button{
   }
   #div1 {
     border-radius: 50%;
+  }
+  #refresh{
+    background-color: #f08f5aa2; /* Green */
+    border: none;
+    color: rgba(12, 11, 11, 0.534);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 30px;
+    width: 30%;
   }
