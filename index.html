@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +14,14 @@
       height: 100vh;
       background-color: lightpink;
     }
+
     .card {
       max-width: 500px;
       width: 100%;
       background-color: lightpink;
       border-radius: 15px;
     }
+
     .card-header {
       background-color: lightpink;
       border-bottom: none;
@@ -26,15 +29,18 @@
       font-size: 1.2rem;
       text-align: center;
     }
+
     .card-body {
       padding: 20px;
     }
+
     #resultFrame {
       width: 100%;
       height: 500px;
       border: none;
       margin-top: 20px;
     }
+
     .btn-primary {
       background-color: green;
       border-radius: 15px;
@@ -43,10 +49,11 @@
   </style>
   <title>NMMS Details Form</title>
 </head>
+
 <body>
   <div class="card">
     <div class="card-header">
-      NMMS ഹാജർ നില 
+      NMMS ഹാജർ നില
     </div>
     <div class="card-body">
       <form id="userForm">
@@ -82,9 +89,11 @@
     #resultFrame {
       display: none;
     }
+
     #resultFrame.loaded {
       display: block;
     }
+
     .result-card {
       max-width: 800px;
       width: 100%;
@@ -93,15 +102,18 @@
       margin-top: 20px;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       background-color: white;
-      
+
     }
+
     .result-card iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+
     @media (max-width: 576px) {
-      .card, .result-card {
+      .card,
+      .result-card {
         max-width: 100%;
         border-radius: 0;
       }
@@ -117,8 +129,15 @@
       var workCode = document.getElementById('workCode').value;
       var msrNo = document.getElementById('msrNo').value;
 
-      // Construct the URL with user inputs
-      var url = 'https://mnregaweb4.nic.in/nregaarch/View_NMMS_atten_date_dtl_rpt.aspx?page=&short_name=KL&state_name=KERALA&state_code=16&district_name=KANNUR&district_code=1602&block_name=Kuthuparamba&block_code=1602006&panchayat_name=Mangattidam&panchayat_code=1602006004&fin_year=2023-2024&source=&work_code=1602006004/' + workType + '/' + workCode + '&msr_no=' + msrNo + '&AttendanceDate=26/06/2023&Digest=cxhYqe9HKdr+HF2aZswmjA';
+      // Get the current date in dd/mm/yyyy format
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var yyyy = today.getFullYear();
+      var currentDate = dd + '/' + mm + '/' + yyyy;
+
+      // Construct the URL with user inputs and current date
+      var url = 'https://mnregaweb4.nic.in/nregaarch/View_NMMS_atten_date_dtl_rpt.aspx?page=&short_name=KL&state_name=KERALA&state_code=16&district_name=KANNUR&district_code=1602&block_name=Kuthuparamba&block_code=1602006&panchayat_name=Mangattidam&panchayat_code=1602006004&fin_year=2023-2024&source=&work_code=1602006004/' + workType + '/' + workCode + '&msr_no=' + msrNo + '&AttendanceDate=' + currentDate + '&Digest=cxhYqe9HKdr+HF2aZswmjA';
 
       // Append query parameters to display only the table and image
       url += '&showTable=true&showImage=true';
@@ -146,4 +165,5 @@
     }
   </script>
 </body>
+
 </html>
