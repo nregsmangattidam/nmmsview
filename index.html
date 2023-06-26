@@ -1,13 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NMMS Details Mangattidam GP</title>
-    <link rel="stylesheet" href="stylejc.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      background-color: lightpink;
+    }
+    .card {
+      max-width: 500px;
+      width: 100%;
+      background-color: lightpink;
+      border-radius: 15px;
+    }
+    .card-header {
+      background-color: lightpink;
+      border-bottom: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+    .card-body {
+      padding: 20px;
+    }
+    #resultFrame {
+      width: 100%;
+      height: 500px;
+      border: none;
+      margin-top: 20px;
+    }
+    .btn-primary {
+      background-color: green;
+      border-radius: 15px;
+      border-color: green;
+    }
+  </style>
+  <title>NMMS Details Form</title>
 </head>
-<body> 
-  <h2> ക്ഷമിക്കണം ! സേവനം നിർത്തിയിരിക്കുന്നു. ! <h2>
+<body>
+  <div class="card">
+    <div class="card-header">
+      NMMS ഹാജർ നില 
+    </div>
+    <div class="card-body">
+      <form id="userForm">
+        <div class="form-group">
+          <label for="workType">Work Type</label>
+          <select class="form-control" id="workType" required>
+            <option value="">Select Work Type</option>
+            <option value="LD">കൃഷിക്ക് നിലമൊരുക്കൽ LD</option>
+            <option value="WC">മണ്ണ് ജലസംരക്ഷണം മഴക്കുഴി WC</option>
+            <option value="FP">തോട് സംരക്ഷണം FP</option>
+            <option value="IF">വ്യക്തിഗത പ്രവൃത്തികൾ IF</option>
+            <option value="RC">റോഡ് RC</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="workCode">Work Code</label>
+          <input type="text" class="form-control" id="workCode" placeholder="Enter work code" required>
+        </div>
+        <div class="form-group">
+          <label for="msrNo">MSR No.</label>
+          <input type="text" class="form-control" id="msrNo" placeholder="Enter MSR number" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="card result-card">
+    <iframe id="resultFrame"></iframe>
+  </div>
+
+  <style>
+    #resultFrame {
+      display: none;
+    }
+    #resultFrame.loaded {
+      display: block;
+    }
+    .result-card {
+      max-width: 800px;
+      width: 100%;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      background-color: white;
+      
+    }
+    .result-card iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    @media (max-width: 576px) {
+      .card, .result-card {
+        max-width: 100%;
+        border-radius: 0;
+      }
+    }
+  </style>
+
+  <script>
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get user input values
+      var workType = document.getElementById('workType').value;
+      var workCode = document.getElementById('workCode').value;
+      var msrNo = document.getElementById('msrNo').value;
+
+      // Construct the URL with user inputs
+      var url = 'https://mnregaweb4.nic.in/nregaarch/View_NMMS_atten_date_dtl_rpt.aspx?page=&short_name=KL&state_name=KERALA&state_code=16&district_name=KANNUR&district_code=1602&block_name=Kuthuparamba&block_code=1602006&panchayat_name=Mangattidam&panchayat_code=1602006004&fin_year=2023-2024&source=&work_code=1602006004/' + workType + '/' + workCode + '&msr_no=' + msrNo + '&AttendanceDate=26/06/2023&Digest=cxhYqe9HKdr+HF2aZswmjA';
+
+      // Append query parameters to display only the table and image
+      url += '&showTable=true&showImage=true';
+
+      // Set the src attribute of the iframe to the modified URL
+      var resultFrame = document.getElementById('resultFrame');
+      resultFrame.src = url;
+
+      // Add 'loaded' class to the iframe when it is fully loaded
+      resultFrame.onload = function() {
+        resultFrame.classList.add('loaded');
+        hideContentInsideIframe(resultFrame);
+      };
+    });
+
+    function hideContentInsideIframe(iframe) {
+      var iframeWindow = iframe.contentWindow || iframe.contentDocument.defaultView;
+      iframeWindow.addEventListener('DOMContentLoaded', function() {
+        var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        var elementsToHide = iframeDocument.querySelectorAll(':not(table):not(img)');
+        for (var i = 0; i < elementsToHide.length; i++) {
+          elementsToHide[i].style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
